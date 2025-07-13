@@ -1,0 +1,32 @@
+{
+  "tickets": [
+    {
+      "title": "Fix the footer links please",
+      "body": "i need to do a footer in this app",
+      "priority": "medium",
+      "user_email": "amenkalai53@gmail.com",
+      "id": "1"
+    },
+    {
+      "title": "do a filter",
+      "body": "add a filter when displaying all tivkets by priorities",
+      "priority": "high",
+      "user_email": "amenkalai53@gmail.com",
+      "id": "d6fd"
+    },
+    {
+      "title": "add theme to the website ",
+      "body": "add theme to the webapp via useContext",
+      "priority": "low",
+      "user_email": "amenkalai53@gmail.com",
+      "id": "bd69"
+    },
+    {
+      "title": "aabb",
+      "body": "dfdf",
+      "priority": "low",
+      "user_email": "amenkalai53@gmail.com",
+      "id": "af94"
+    }
+  ]
+}
