@@ -1,6 +1,6 @@
 'use client'
 
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 // shadcn components
@@ -12,8 +12,7 @@ import { useTheme } from '@/app/context/ThemeContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { modifyTicketAsync } from '@/app/store/slices/ticketsSlice'
 
-export default function ModifyTicket({ id : promisID }) {
-  const id = use(promisID)
+export default function ModifyTicket({ id }) {
   const router = useRouter()
   const {theme} = useTheme()
   const dispatch = useDispatch()
