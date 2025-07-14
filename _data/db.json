@@ -1,32 +1,39 @@
 {
   "tickets": [
     {
-      "title": "Fix the footer links please",
-      "body": "i need to do a footer in this app",
-      "priority": "medium",
-      "user_email": "amenkalai53@gmail.com",
-      "id": "1"
+      "id": "925e",
+      "title": "Redux toolkit",
+      "body": "add redux toolkit to the application",
+      "priority": "high",
+      "user_email": "amenkalai53@gmail.com"
     },
     {
-      "title": "do a filter",
-      "body": "add a filter when displaying all tivkets by priorities",
+      "title": "more redux ",
+      "body": "read the redux toolkit documentation ...",
       "priority": "high",
       "user_email": "amenkalai53@gmail.com",
-      "id": "d6fd"
+      "id": "476d"
     },
     {
-      "title": "add theme to the website ",
-      "body": "add theme to the webapp via useContext",
-      "priority": "low",
-      "user_email": "amenkalai53@gmail.com",
-      "id": "bd69"
+      "id": "b603",
+      "title": "ci4",
+      "body": "continue on working more on ci4 \ntoken authentification \njwt or session",
+      "priority": "medium",
+      "user_email": "user@gmail.com"
     },
     {
-      "title": "aabb",
-      "body": "dfdf",
+      "id": "e978",
+      "title": "abdel fateh",
+      "body": "aaml git repo w abaath l aabd fateh ...",
+      "priority": "high",
+      "user_email": "user@gmail.com"
+    },
+    {
+      "id": "09fe",
+      "title": "ticket ",
+      "body": "another test ...",
       "priority": "low",
-      "user_email": "amenkalai53@gmail.com",
-      "id": "af94"
+      "user_email": "user@gmail.com"
     }
   ]
 }

@@ -9,35 +9,41 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/app/context/ThemeContext"
+import { useDispatch } from "react-redux"
+import { addTicketAsync } from "@/app/store/slices/ticketsSlice"
 
 export default function CreateForm() {
   const router = useRouter()
   const {theme} = useTheme()
+
+  const dispatch = useDispatch()
 
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [priority, setPriority] = useState('low')
   const [isLoading, setIsLoading] = useState(false)
 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-    const response = await fetch("http://localhost:4000/tickets", {
-      method: 'POST',
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        title,
-        body,
-        priority,
-        user_email: 'amenkalai53@gmail.com'
-      })
-    })
-
-    if (response.status === 201) {
+    const newTicket = {
+      title,
+      body,
+      priority,
+      user_email: 'user@gmail.com' /*temporary*/
+    }
+    const resultAction = await dispatch(addTicketAsync(newTicket))
+    // to inspect if the action was fulfied 
+    if (addTicketAsync.fulfilled.match(resultAction)) {
       //without refresh the browser gonna give us the cashed page  
       router.refresh()
       router.push('/tickets')
+    } else {
+      console.error('Failed to add ticket:', resultAction)
     }
+    
+    setIsLoading(false)
   }
 
   return (

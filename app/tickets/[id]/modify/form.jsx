@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { use, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 // shadcn components
@@ -9,58 +9,44 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { useTheme } from '@/app/context/ThemeContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { modifyTicketAsync } from '@/app/store/slices/ticketsSlice'
 
-export default function ModifyTicket({ id }) {
+export default function ModifyTicket({ id : promisID }) {
+  const id = use(promisID)
   const router = useRouter()
   const {theme} = useTheme()
-
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-  const [priority, setPriority] = useState('medium')
+  const dispatch = useDispatch()
+  const ticket = useSelector((state) => state.tickets.ticketsList).find((t) => t.id === id)
+  console.log('ticket to modify : ',ticket)
+  const [title, setTitle] = useState(ticket.title)
+  const [body, setBody] = useState(ticket.body)
+  const [priority, setPriority] = useState(ticket.priority)
   const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    const fetchTicket = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/tickets/${id}`)
-
-        if (!response.ok) {
-          router.push('/not-found')
-          return
-        }
-
-        const data = await response.json()
-        setTitle(data.title)
-        setBody(data.body)
-        setPriority(data.priority)
-      } catch (err) {
-        console.error(err)
-        router.push('/not-found')
-      }
-    }
-
-    fetchTicket()
-  }, [id, router])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
 
-    const response = await fetch(`http://localhost:4000/tickets/${id}`, {
-      method: 'PUT',
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        title,
-        body,
-        priority,
-        user_email: 'amenkalai53@gmail.com'
-      })
-    })
-
-    if (response.ok) {
-      router.refresh()
-      router.push('/tickets')
+    const modifiedTicket = {
+      id,
+      title,
+      body,
+      priority,
+      user_email: 'user@gmail.com' /*temporary*/
     }
+    console.log("modified to put ticket : ",modifiedTicket)
+    const resultAction = await dispatch(modifyTicketAsync(modifiedTicket))
+    // to inspect if the action was fulfied 
+    if (modifyTicketAsync.fulfilled.match(resultAction)) {
+      //without refresh the browser gonna give us the cashed page  
+      router.refresh()
+      router.push(`/tickets/${id}`)
+    } else {
+      console.error('Failed to modify ticket:', resultAction)
+    }
+    
+    setIsLoading(false)
   }
 
   return (
