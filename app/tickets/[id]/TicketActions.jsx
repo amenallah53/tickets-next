@@ -1,10 +1,10 @@
 'use client'
 import Link from "next/link"
-import { Trash2, Pencil } from "lucide-react"
+import { Pencil } from "lucide-react"
 import { useRouter } from "next/navigation"
 import DeleteButton from "./DeleteButton"
 import { useDispatch } from "react-redux"
-import { deleteTicketAsync } from "@/app/store/slices/ticketsSlice"
+import { deleteTicket, deleteTicketAsync } from "@/app/store/slices/ticketsSlice"
 
 
 export default function TicketActions({ id }) {
@@ -13,6 +13,7 @@ export default function TicketActions({ id }) {
 
   const handleDelete = async (e) => {
     e.preventDefault()
+    console.log('delete : ')
     const dispatchStatus = await dispatch(deleteTicketAsync(id))
     if (deleteTicketAsync.fulfilled.match(dispatchStatus)){
       router.refresh()

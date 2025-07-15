@@ -1,24 +1,19 @@
 'use client'
 import { use } from 'react'
-import { useRouter } from 'next/navigation'
 import TicketActions from './TicketActions'
 import { useTheme } from '@/app/context/ThemeContext'
 import { useSelector } from 'react-redux'
 
 export default function TicketDetails({ params: paramsPromise }) {
-  const router = useRouter()
   const { theme } = useTheme()
   const params = use(paramsPromise) //because in client components params becomes a promise
   const id = params.id 
-  const ticketsList = useSelector((state) => state.tickets.ticketsList)
-
-  const ticket = ticketsList.find((t) => t.id === id)
+  const ticket = useSelector((state) => state.tickets.ticketsList.find((t) => t.id === id))
+  console.log('i am ticket ',ticket)
 
   if (!ticket) {
-    router.push('/not-found')
-    return null
+    return <p>Ticket not found.</p>
   }
-
   return (
     <main>
       <nav>

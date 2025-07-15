@@ -16,7 +16,7 @@ export default function ModifyTicket({ id }) {
   const router = useRouter()
   const {theme} = useTheme()
   const dispatch = useDispatch()
-  const ticket = useSelector((state) => state.tickets.ticketsList).find((t) => t.id === id)
+  const ticket = useSelector((state) => state.tickets.ticketsList).find((t) => t.id === id) || []
   console.log('ticket to modify : ',ticket)
   const [title, setTitle] = useState(ticket.title)
   const [body, setBody] = useState(ticket.body)

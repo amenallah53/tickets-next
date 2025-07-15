@@ -11,7 +11,7 @@ export default function TicketsList({ filter }) {
   const {theme} = useTheme()
   const [filteredTickets, setFilteredTickets] = useState([])
   //redux dispatch & selector
-  const dispatch = useDispatch(); //calling the dispatch (to ditpach actions)
+  const dispatch = useDispatch(); //calling the dispatch (to dispach actions)
   const {ticketsList,hasFetched} = useSelector((state) => state.tickets); //getting the state
   console.log('tickets out of useEffect',ticketsList)
 

@@ -1,37 +1,23 @@
 {
   "tickets": [
     {
-      "id": "925e",
-      "title": "Redux toolkit",
-      "body": "add redux toolkit to the application",
-      "priority": "high",
-      "user_email": "amenkalai53@gmail.com"
-    },
-    {
-      "title": "more redux ",
-      "body": "read the redux toolkit documentation ...",
-      "priority": "high",
-      "user_email": "amenkalai53@gmail.com",
-      "id": "476d"
-    },
-    {
       "id": "b603",
-      "title": "ci4",
-      "body": "continue on working more on ci4 \ntoken authentification \njwt or session",
-      "priority": "medium",
-      "user_email": "user@gmail.com"
-    },
-    {
-      "id": "e978",
-      "title": "abdel fateh",
-      "body": "aaml git repo w abaath l aabd fateh ...",
-      "priority": "high",
+      "title": "test",
+      "body": "test testet test",
+      "priority": "low",
       "user_email": "user@gmail.com"
     },
     {
       "id": "09fe",
       "title": "ticket ",
       "body": "another test ...",
+      "priority": "low",
+      "user_email": "user@gmail.com"
+    },
+    {
+      "id": "9e18",
+      "title": "add",
+      "body": "added body",
       "priority": "low",
       "user_email": "user@gmail.com"
     }
